@@ -77,7 +77,7 @@ function buyUpgradeIfPossible(elem) {
 	const nbrFishToAdd = nbrFishToAddForUpgrade[upgradeEffectType];
 
 	if (score >= upgradeCost) {
-		if (doubleConfirmationBuyUpgrade()) {
+		initConfirmModal(() => {
 			for (let child of elem.children) {
 				if (child.tagName === "BUTTON") {
 					child.innerHTML = "Acheté";
@@ -85,7 +85,6 @@ function buyUpgradeIfPossible(elem) {
 				}
 			}
 
-			alert("Amélioration achetée !");
 			updateScore(-upgradeCost);
 
 
@@ -94,6 +93,7 @@ function buyUpgradeIfPossible(elem) {
 				updateScore(nbrFishToAdd);
 			}, upgradeEffectDelay);
 		}
+		);
 	} else {
 		//TODO modal pas assez d'argent
 	}

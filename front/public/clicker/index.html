@@ -35,6 +35,27 @@
 		</div>
 	</div>
 
+	<div class="modal_main_backdrop" id="modal_confirm" inert>
+		<div class="modal_container_box">
+			<!-- Modal Header -->
+			<div class="close_modal_tright" tabindex='1' onclick="closeModalContent('modal_confirm')"> &times; </div>
+
+			<!-- Modal Contents Container -->
+			<div class="main_contents_box">
+				<p class="first-confirm">Êtes-vous sûr d'acheter cette amélioration ?</p>
+				<div class="modal_buttons first-confirm">
+					<button class="modal_button" onclick="toSecondConfirmModal()">Oui</button>
+					<button class="modal_button" onclick="closeModalContent('modal_confirm')">Non</button>
+				</div>
+				<p class="second-confirm" style="visibility: hidden;">Confirmez encore une fois !</p>
+				<div class="modal_buttons second-confirm" style="visibility: hidden;">
+					<button class="modal_button" onclick="closeModalContent('modal_confirm')">Non</button>
+					<button id="onclick-buy-confirm" class=" modal_button">Oui</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div id="game">
 		<div id="water-surface">
 			<img src="img/top_sea.jpg" alt="Surface de l'eau">
