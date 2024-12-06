@@ -4,11 +4,37 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>Nautilus Clicker</title>
+	<title>Clicker</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+	<div class="modal_main_backdrop" id="modal_1" inert>
+		<div class="modal_container_box">
+			<!-- Modal Header -->
+			<div class="close_modal_tright" tabindex='1' onclick="closeModalContent('modal_1')"> &times; </div>
+
+			<!-- Modal Contents Container -->
+			<div class="main_contents_box">
+				<p>Bienvenue dans Clicker !<br /><br />
+
+					Le but du jeu est simple :<br />
+					Cliquez sur les tuyaux pour tuer des poissons <br />
+					et gagnez des points. Avec les points récoltés, <br />
+					vous pouvez acheter des améliorations pour<br />
+					tuer encore plus de poissons et augmenter <br />
+					vos gains !<br /><br />
+
+					Soyez stratégique et maximisez vos <br />
+					améliorations pour atteindre de <br />
+					nouveaux niveaux et défier vos amis.<br /><br />
+
+					Prêt à plonger dans l'aventure ?<br />Bonne chance !
+				</p>
+			</div>
+		</div>
+	</div>
+
 	<div id="game">
 		<div id="water-surface">
 			<img src="img/top_sea.jpg" alt="Surface de l'eau">
@@ -83,9 +109,10 @@
 		</div>
 	</div>
 	<script src="global.js"></script>
-	<script src="upgrade.js"></script>
 	<script src="fish.js"></script>
+	<script src="upgrade.js"></script>
 	<script src="pipe.js"></script>
+	<script src="modal.js"></script>
 </body>
 
 </html>

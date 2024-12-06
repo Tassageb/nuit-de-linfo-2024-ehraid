@@ -14,6 +14,64 @@ body {
 	-webkit-user-select: none; /* Désactive la sélection (empêche zoom double-tap) */
 	-webkit-touch-callout: none;
   }
+
+
+  .modal_main_backdrop{
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:2000;
+	display:flex;
+	background:rgba(0,0,0,0.2);
+	justify-content:center;
+	align-items:center;
+	opacity:0;
+	pointer-events:none;
+	-webkit-transition:0.2s;
+	transition:0.2s;
+}
+
+.modal_container_box{
+	width:100%;
+	max-width:500px;
+	min-height:500px;
+	background-image: url("img/cadre.png");
+	background-size: cover; /* L'image couvre toute la page */
+	color:var(--primary_color);
+	border-radius:5px;
+	opacity:1;
+}
+
+.close_modal_tright {
+	position: relative;
+	top: 10vh;
+	width: 10px;
+	left: 7vw;
+	padding: 10px;
+	color: black;
+	font-size: 20px;
+	text-decoration: bold;
+}
+
+.modal_main_backdrop.show{
+	opacity:1;
+	pointer-events:all;
+	
+}
+
+.modal_container_box > .main_contents_box{
+	position: relative;
+	color: black;
+	top: 7vh;
+	overflow-y:auto;
+	overflow-x:hidden;
+	max-height:90vh;
+
+	padding:5px;
+}
+
   
   #back {
 	width: 3vw;
@@ -82,14 +140,6 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-  }
-  
-  .fish {
-	z-index: 9999;
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	cursor: pointer;
   }
   
   #upgrades {

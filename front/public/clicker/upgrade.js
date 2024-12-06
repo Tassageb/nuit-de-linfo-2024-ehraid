@@ -3,7 +3,16 @@ const upgradesDiv = {
 	"boat": [],
 	"pipe": [],
 };
-
+const nameUpgrade = {
+	"boat_small": "Petit bateau",
+	"boat_mid": "Bateau moyen",
+	"boat_big": "Gros bateau",
+	"factory_small": "Petite usine",
+	"factory_mid": "Usine moyenne",
+	"factory_big": "Grosse usine",
+	"waste": "Déchets",
+	"waste_nuk": "Déchets nucléaires",
+};
 const idUpgrade = {
 	"boat_small": "img-boat_small",
 	"boat_mid": "img-boat_mid",
@@ -15,35 +24,35 @@ const idUpgrade = {
 	"waste_nuk": "img-waste_nuk",
 };
 const coastUpgrade = {
-	"boat_small": 300,
-	"boat_mid": 1000,
-	"boat_big": 3000,
-	"factory_small": 400,
-	"factory_mid": 60,
-	"factory_big": 500,
-	"waste": 75,
+	"boat_small": 30,
+	"boat_mid": 100,
+	"boat_big": 250,
+	"factory_small": 200,
+	"factory_mid": 400,
+	"factory_big": 600,
+	"waste": 500,
 	"waste_nuk": 1000,
 };
 const nbrFishToAddForUpgrade = {
-	"boat_small": 10,
-	"boat_mid": 25,
-	"boat_big": 60,
-	"factory_small": 30,
-	"factory_mid": 60,
-	"factory_big": 500,
-	"waste": 75,
-	"waste_nuk": 1000,
+	"boat_small": 1,
+	"boat_mid": 3,
+	"boat_big": 7,
+	"factory_small": 2,
+	"factory_mid": 5,
+	"factory_big": 8,
+	"waste": 20,
+	"waste_nuk": 100,
 };
 
 const delayEffectUpgrade = {
-	"boat_small": 1000,
+	"boat_small": 750,
 	"boat_mid": 1000,
-	"boat_big": 1000,
-	"factory_small": 1000,
+	"boat_big": 2000,
+	"factory_small": 750,
 	"factory_mid": 1000,
-	"factory_big": 2000,
-	"waste": 1000,
-	"waste_nuk": 3000,
+	"factory_big": 1500,
+	"waste": 8000,
+	"waste_nuk": 10000,
 };
 
 
@@ -67,25 +76,26 @@ function buyUpgradeIfPossible(elem) {
 	const upgradeEffectDelay = delayEffectUpgrade[upgradeEffectType];
 	const nbrFishToAdd = nbrFishToAddForUpgrade[upgradeEffectType];
 
-	if (score >= upgradeCost || true) { // TODO : enlever le true
+	if (score >= upgradeCost) {
 		if (doubleConfirmationBuyUpgrade()) {
 			for (let child of elem.children) {
-				child.disabled = true;
+				if (child.tagName === "BUTTON") {
+					child.innerHTML = "Acheté";
+					child.disabled = true;
+				}
 			}
 
 			alert("Amélioration achetée !");
 			updateScore(-upgradeCost);
 
 
-			//TODO afficher le bon upgrade
 			document.getElementById(idUpgrade[upgradeEffectType]).style.visibility = "visible";
 			setInterval(() => { // effet de l'upgrade
-				for (let i = 0; i < nbrFishToAdd; i++) {
-					spawnFish();
-				}
+				updateScore(nbrFishToAdd);
 			}, upgradeEffectDelay);
 		}
 	} else {
+		//TODO modal pas assez d'argent
 	}
 }
 
@@ -97,7 +107,7 @@ upgradeButtons.forEach((button) => {
 	const upgradeEffectDelay = delayEffectUpgrade[upgradeEffectType];
 	const nbrFishToAdd = nbrFishToAddForUpgrade[upgradeEffectType];
 
-	elementP.querySelector("span").textContent = `${upgradeEffectType} ${upgradeCost}🐠 pour +${nbrFishToAdd} 🐠 en ${upgradeEffectDelay / 1000}s`;
+	elementP.querySelector("span").textContent = `${nameUpgrade[upgradeEffectType]} ${upgradeCost}🐠 pour +${nbrFishToAdd} 🐠 chaque ${upgradeEffectDelay / 1000}s`;
 	button.addEventListener("click", () => {
 		buyUpgradeIfPossible(button.parentElement);
 	});

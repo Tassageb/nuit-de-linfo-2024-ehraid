@@ -18,6 +18,7 @@ document.querySelectorAll('#upgraded-container .floating img').forEach(img => {
 
 function addPoints() {
 	score += incPoints;
+	// incPoints = Math.round(score / 100);
 	addFishs(incPoints);
 }
 
@@ -30,7 +31,11 @@ function removePoints() {
 
 function updateScore(points) {
 	score += points;
-	spawnFish(incPoints);
+	if (points >= 0) {
+		addFishs(points);
+	} else {
+		removeFishs(points)
+	}
 }
 
 function back() {
