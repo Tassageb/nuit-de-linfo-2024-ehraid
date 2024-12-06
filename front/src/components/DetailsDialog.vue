@@ -2,20 +2,20 @@
   <v-dialog scrollable>
     <div class="dialog">
       <div class="mb-3">
-        <span class="text-h5">{{ isFine ? depth?.fine.title : depth?.cursed.title }}</span>
+        <span class="text-h5">{{ isFine ? depth?.fine?.title : depth?.cursed?.title }}</span>
       </div>
       <div>
         <div class="mb-3">
-          <p>{{ isFine ? depth?.fine.text : depth?.cursed.text }}</p>
+          <p>{{ isFine ? depth?.fine?.text : depth?.cursed?.text }}</p>
         </div>
       </div>
       <div>
         <p>Côté humain : </p>
-        <img :src="isFine ? depth?.fine.manImgSrc : depth?.cursed.manImgSrc" :alt="isFine ? depth?.fine.manImgAlt : depth?.cursed.manImgAlt">
+        <img :src="isFine ? depth?.fine?.manImgSrc : depth?.cursed?.manImgSrc" :alt="isFine ? depth?.fine?.manImgAlt : depth?.cursed?.manImgAlt">
       </div>
       <div>
         <p>Côté océanique : </p>
-        <img :src="isFine ? depth?.fine.OceanImgSrc : depth?.cursed.OceanImgSrc" :alt="isFine ? depth?.fine.OceanImgAlt : depth?.cursed.OceanImgAlt">
+        <img :src="isFine ? depth?.fine?.OceanImgSrc : depth?.cursed?.OceanImgSrc" :alt="isFine ? depth?.fine?.OceanImgAlt : depth?.cursed?.OceanImgAlt">
       </div>
         <v-btn color="primary" @click="closeDialog">Fermer</v-btn>
     </div>
