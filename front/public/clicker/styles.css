@@ -45,9 +45,13 @@ body {
 }
 
 .close_modal_tright {
+	cursor: pointer;
+	background-color: red;
+	border-radius: 50%;
 	position: relative;
 	top: 10vh;
-	width: 10px;
+	width: 30px;
+	height: 30px;
 	left: 7vw;
 	padding: 10px;
 	color: black;
